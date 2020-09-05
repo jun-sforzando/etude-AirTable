@@ -41,7 +41,9 @@ if __name__ == "__main__":
     yamada = ["receN9Pqw5cwwqkoQ"]
 
     # 名前、URL、画像URL、日付（yyyy-mm-dd）、登録者ID、ジャンル（red,green）を入力
-    asset_airtable.insert_data(
-        "kindle", "https://kindle.jp", "https://kindle.jp/kindle.jpg",
-        "2020-09-05", takahashi, "green"
-    )
+    asset_airtable.insert_data()
+
+    # asset_airtable.insert_data(
+    #     "kindle", "https://kindle.jp", "https://kindle.jp/kindle.jpg",
+    #     "2020-09-05", takahashi, "green"
+    # )
