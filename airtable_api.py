@@ -26,6 +26,37 @@ class AirtableOperation:
         set_data = self.airtable_set
         set_data.insert(asset_data)
 
+    # すべてのデータを表示
+    def all_data(self):
+        all = self.airtable_set.get_all()
+        # データの分だけ繰り返し処理
+        for i in all:
+            # Record IDとコンテンツの内容を取得
+            id = i["id"]
+            keys = list(i["fields"].keys())
+            values = list(i["fields"].values())
+            # Record IDの表示
+            print(f"Record ID: {id}")
+            # コンテンツ分だけ繰り返して表示
+            for i in range(len(keys) - 1):
+                print(f"{keys[i]}: {values[i]}")
+            print("\n")
+
+    # 指定したIDの情報のみ表示
+    def read_data(self, id):
+        get_content = self.airtable_set.get(id)
+
+        # Record IDとコンテンツの内容を取得
+        id = get_content["id"]
+        keys = list(get_content["fields"].keys())
+        values = list(get_content["fields"].values())
+        # Record IDの表示
+        print(f"Record ID: {id}")
+        # コンテンツ分だけ繰り返して表示
+        for i in range(len(keys)):
+            print(f"{keys[i]}: {values[i]}")
+        print("\n")
+
 
 if __name__ == "__main__":
     # キーやテーブル名をsettings.pyから設定
@@ -40,10 +71,13 @@ if __name__ == "__main__":
     naito = ["recfM5BRgNYkLryHo"]
     yamada = ["receN9Pqw5cwwqkoQ"]
 
-    # 名前、URL、画像URL、日付（yyyy-mm-dd）、登録者ID、ジャンル（red,green）を入力
-    asset_airtable.insert_data()
+    # # 名前、URL、画像URL、日付（yyyy-mm-dd）、登録者ID、ジャンル（red,green）を入力
+    # asset_airtable.insert_data()
 
-    # asset_airtable.insert_data(
-    #     "kindle", "https://kindle.jp", "https://kindle.jp/kindle.jpg",
-    #     "2020-09-05", takahashi, "green"
-    # )
+    # # asset_airtable.insert_data(
+    # #     "kindle", "https://kindle.jp", "https://kindle.jp/kindle.jpg",
+    # #     "2020-09-05", takahashi, "green"
+    # # )
+
+    asset_airtable.all_data()
+    # asset_airtable.read_data("recBtBSRgSqc1Rznr")
