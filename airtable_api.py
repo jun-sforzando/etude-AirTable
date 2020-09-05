@@ -24,7 +24,6 @@ class AirtableOperation:
 
         # 接続セット
         set_data = self.airtable_set
-
         set_data.insert(asset_data)
 
 
@@ -35,10 +34,14 @@ if __name__ == "__main__":
     api_key = settings.APIKEY
     # インスタンス化
     asset_airtable = AirtableOperation(basekey, table_name, api_key)
-    # # データを追加する
-    # asset_airtable.insert_data(
-    #     "テスト", "https://test.jp", "https://test.jp/test.jpg",
-    #     "2020-09-03", ['receN9Pqw5cwwqkoQ'], "red"
-    # )
-    # print(asset_airtable.all_data())
-    print(api_key)
+
+    # リンクテーブルの登録者名のRecord ID
+    takahashi = ["recEzfsg0YPt5AIB7"]
+    naito = ["recfM5BRgNYkLryHo"]
+    yamada = ["receN9Pqw5cwwqkoQ"]
+
+    # 名前、URL、画像URL、日付（yyyy-mm-dd）、登録者ID、ジャンル（red,green）を入力
+    asset_airtable.insert_data(
+        "kindle", "https://kindle.jp", "https://kindle.jp/kindle.jpg",
+        "2020-09-05", takahashi, "green"
+    )
