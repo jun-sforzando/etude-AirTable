@@ -9,6 +9,7 @@
 ## Setup
 
 1. ターミナルで `python3 -m venv venv` を実行して仮想環境を作成
+1. `.venv` ファイルを設置
 1. `source venv/bin/activate` を実行
 1. `pip install -r requirements.txt` を実行
 
